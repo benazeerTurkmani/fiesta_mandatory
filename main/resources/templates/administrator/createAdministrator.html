@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+
+<div>
+    <h1>Create new adminstrator</h1>
+    <div>
+        <div>
+            <form method="post" action="/adminstrator/new">
+                <div>
+                    <div>
+                        <label>Email</label>
+                        <input th:field="${administrator.email}" type="text" placeholder="Enter email">
+                    </div>
+                    <div>
+                        <label>Kodeord</label>
+                        <input th:field="${administrator.password}" type="text" placeholder=" Enter password">
+                    </div>
+                    <div>
+                        <label>Fornavn</label>
+                        <input th:field="${administrator.firstName}" type="text" placeholder="Enter firstname">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Efternavn</label>
+                        <input th:field="${administrator.lastName}" type="text" placeholder="Enter lastname">
+                    </div>
+                </div>
+                <button type="submit" value="send">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

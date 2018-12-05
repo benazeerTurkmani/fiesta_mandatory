@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontpage</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+<div>
+    <ul>
+        <li>
+            <a href="/courses/new">Create new course</a>
+        </li>
+        <li>
+            <a href="/courses/show">List of all Courses</a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
+
+<!--
+Teacher. This user will login with the school credentials and can do the following tasks:
+Create a new course with all the course information (see Course info section)
+Edit a course they created or they are teaching with other teachers.
+--->

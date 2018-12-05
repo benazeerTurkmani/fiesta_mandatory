@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+
+<div>
+    <div>
+        <h1>Students</h1>
+        <a href="/student/new">Add new student</a>
+
+        <table>
+            <thead>
+            <tr>
+                <td scope="col">Name</td>
+                <td scope="col">Email</td>
+                <td scope="col">Options</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student:${student}">
+                <td th:text="${student.lastName} + ', ' + ${student.firstName}">{{name}}</td>
+                <td th:text="${student.email}">{{email}}</td>
+                <td>
+                    <button th:href="'/student/edit/'+${student.id}">Edit</button>
+                    <button th:href="'/student/delete/'+${student.id}" onclick="return confirm('This will delete student, confirm?')">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>

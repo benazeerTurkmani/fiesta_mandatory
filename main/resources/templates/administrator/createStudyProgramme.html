@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Create studyprogramme</title>
+</head>
+<body>
+<div th:replace="header"></div>
+
+<div>
+    <h1>Create new study programme</h1>
+    <div>
+        <div>
+            <form method="post" action="/studyProgramme/new">
+                <div>
+                    <div>
+                        <label>Name</label>
+                        <input th:field="${studyProgramme.name}" type="text" placeholder="Enter name of study programme">
+                    </div>
+                </div>
+                <button type="submit" value="send">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

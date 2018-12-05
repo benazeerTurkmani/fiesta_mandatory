@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+
+<div>
+    <h1>Editing study programme</h1>
+    <div>
+        <form th:object="${bruger}">
+                <div>
+                    <label for="name">Name of study programme</label>
+                    <input th:field="${bruger.name}" type="text" id="name" placeholder="Enter name of study programme!">
+                </div>
+            <button type="button" class="update">Update</button>
+            <button type="button" class="delete" th:attr="data-id=${bruger.id}">Delete</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).on("click", ".delete", function () {
+        console.log("Button press");
+        var studyprogrammeID = $(this).data("id");
+
+        $.ajax({
+            url: 'http://localhost:8080/bruger/delete/' + studyprogrammeID,
+            method: 'delete',
+            success: function (resp) {
+                alert("This equipment has been deleted\n" + JSON.stringify(resp));
+                location.reload();
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    })
+</script>
+<script th:inline="javascript">
+    $(document).on('click', 'update', function () {
+        console.log("btn pressed");
+        console.log($('#name').val());
+        var studyprogrammeID = [[${equipment.id}]];
+        $.ajax({
+            url: "http://localhost:8080/bruger/update/"+studyprogrammeID,
+            method: "put",
+            data: {
+                name: $('#name').val(),
+                firstname:$('#firstname').val() ,
+            },
+            success: function (resp) {
+                alert("This equipment has been updated\n" + JSON.stringify(resp));
+                location.href="/administrator/viewStudyProgramme";
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
