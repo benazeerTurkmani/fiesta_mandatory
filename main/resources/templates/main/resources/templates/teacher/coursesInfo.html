@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Course information</title>
+</head>
+<body>
+<div th:if="${brugerType.equals('Teacher')}"><div th:replace="teacher/header"></div>
+</div>
+<div th:if="${brugerType.equals('Student')}"><div th:replace="student/header"></div>
+</div>
+
+<div>
+    <div >
+        <h1>Course details <br></h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <td th:text="${courses.id}">{{id}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Name(DA)</th>
+                <td th:text="${courses.nameInDanish}">{{nameInDanish}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Name(EN)</th>
+                <td th:text="${courses.nameInEnglish}">{{nameInEnglish}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Mandatory</th>
+                <td th:text="${courses.mandatory}">{{mandatory}}</td>
+            </tr>
+            <tr>
+                <th scope="col">ECTS</th>
+                <td th:text="${courses.ects}">{{ECTS}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Semester</th>
+                <td th:text="${courses.semester}">{{Semester}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Class code</th>
+                <td th:text="${courses.classCode}">{{classCode}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Language</th>
+                <td th:text="${courses.language}">{{language}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Min # of students</th>
+                <td th:text="${courses.minimumNumberOfStudents}">{{min students}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Max # of students</th>
+                <td th:text="${courses.maximumNumberOfStudents}">{{max students}}</td>
+
+            </tr>
+            <tr>
+                <th scope="col">Expected # of students</th>
+                <td th:text="${courses.expectedNumberOfStudents}">{{exp students}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Prerequisites</th>
+                <td th:text="${courses.prerequisites}">{{prerequisites}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Learning outcome</th>
+                <td th:text="${courses.learningOutcome}">{{learningOutcome}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Content</th>
+                <td th:text="${courses.content}">{{content}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Learning activities</th>
+                <td th:text="${courses.learningActivities}">{{learningActivities}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Exam form</th>
+                <td th:text="${courses.examForm}">{{examForm}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Study programme</th>
+                <td th:text="${courses.studyProgramme.getName()}">{{studyProgramme}}</td>
+            </tr>
+            <tr>
+                <th scope="col">Teachers</th>
+                <td>
+                    <span th:each="teacher : ${courses.teachers}" th:text="${teacher.firstName}"></span>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

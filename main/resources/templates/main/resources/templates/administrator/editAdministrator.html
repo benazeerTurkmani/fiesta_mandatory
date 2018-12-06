@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+
+<div>
+    <h1>Editing adminstrator</h1>
+        <div>
+            <form th:object="${administrator}">
+                <div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input th:field="${administrator.email}" type="text" id="email" placeholder="Enter email">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input th:field="${administrator.password}" type="text" id="password"  placeholder=" Enter password">
+                    </div>
+                    <div>
+                        <label for="firstName">First name</label>
+                        <input th:field="${administrator.firstName}" type="text" id="firstName" placeholder="Enter firstname">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastName">Last name</label>
+                        <input th:field="${administrator.lastName}" type="text" id="lastName" placeholder="Enter lastname">
+                    </div>
+                </div>
+                <button type="button" class="update" id="update-btn">Update</button>
+                <button type="button" class="delete" th:attr="data-id=${administrator.id}">Delete</button>
+            </form>
+        </div>
+</div>
+
+<!-------------------------------- JavaScript------------------------------>
+
+<script>
+    $(document).on("click", ".delete", function () {
+        console.log("Button press");
+        var brugerId = $(this).data("id");
+
+        $.ajax({
+            url: 'http://localhost:8080/bruger/delete/' + brugerId,
+            method: 'delete',
+            success: function (resp) {
+                alert("This equipment has been deleted\n" + JSON.stringify(resp));
+                location.reload();
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    })
+</script>
+<script th:inline="javascript">
+    $(document).on('click', 'update', function () {
+        console.log("btn pressed");
+        console.log($('#name').val());
+        var brugerId = [[${equipment.id}]];
+        $.ajax({
+            url: "http://localhost:8080/bruger/update/"+brugerId,
+            method: "put",
+            data: {
+                email: $('#eamil').val(),
+                firstname:$('#firstname').val() ,
+                lastname: $('#lastname').val(),
+                password: $('#password').val(),
+            },
+            success: function (resp) {
+                alert("This equipment has been updated\n" + JSON.stringify(resp));
+                location.href="/administrator/viewAdministrator";
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

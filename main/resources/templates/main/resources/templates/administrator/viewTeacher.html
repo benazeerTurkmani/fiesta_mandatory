@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+
+<div>
+    <div>
+        <h1 class="display-4">Teachers</h1>
+        <a href="/teacher/new">Add new teacher</a>
+
+        <table>
+            <thead>
+            <tr>
+                <td scope="col">ID</td>
+                <td scope="col">Name</td>
+                <td scope="col">Email</td>
+                <td scope="col">Options</td>
+            </tr>
+            <tbody>
+            <tr th:each="teacher:${teacher}">
+                <td th:text="${teacher.id}" >{{id}}</td>
+                <td th:text="${teacher.lastName} + ', ' + ${teacher.firstName}">{{name}}</td>
+                <td th:text="${teacher.email}">{{email}}</td>
+                <td>
+                    <a th:href="'/teacher/delete/'+${teacher.id}" onclick="return confirm('This will delete teacher, confirm?')">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

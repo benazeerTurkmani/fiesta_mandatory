@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>View Studyprogramme</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+
+<form method="post" action="/studyProgramme/new">
+    <div>
+        <h1>Study Programmes</h1>
+        <a href="/studyProgramme/new">Add new study program</a>
+
+        <ul th:each="studyProgramme:${studyProgramme}">
+            <li th:text="${studyProgramme.name}"></li>
+            <a th:href="@{'/studyprogramme/delete/'+${studyProgramme.id}}">Remove</a>
+            <a th:href="'/studyProgramme/edit/?id='+${studyProgramme.id}">Edit</a>
+        </ul>
+    </div>
+</form>
+
+</body>
+</html>

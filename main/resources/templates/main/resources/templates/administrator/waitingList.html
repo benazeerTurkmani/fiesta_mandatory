@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Waiting list</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div>
+    <div>
+        <h1>Courses<br></h1>
+        <a href="/courses/new">Add new course</a>
+        <table>
+            <thead>
+            <tr>
+                <td scope="col">ID</td>
+                <td scope="col">Name(DA)</td>
+                <td scope="col">Name(EN)</td>
+                <td scope="col">Semester</td>
+                <td scope="col">Class code</td>
+                <td scope="col">Language</td>
+                <td scope="col">Teacher</td>
+                <td scope="col">Students</td>
+                <td scope="col">Options</td>
+                <td scope="col">Waiting List</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course:${courses}">
+                <td th:text="${course.id}">{{id}}</td>
+                <td th:text="${course.nameInDanish}">{{nameInDanish}}</td>
+                <td th:text="${course.nameInEnglish}">{{nameInEnglish}}</td>
+                <td th:text="${course.semester}">{{Semester}}</td>
+                <td th:text="${course.classCode}">{{classCode}}</td>
+                <td th:text="${course.language}">{{language}}</td>
+                <td>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="white-space: nowrap;" th:each="teacher : ${course.teachers}" th:text="${teacher.lastName} + ', ' + ${teacher.firstName}">
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <a th:href="'/teacher/coursesInfo/?id='+${course.id}">Show more</a>
+                    <a href="/student/show">Students</a>
+                </td>
+                <td>
+                    <a th:href="'/administrator/waitingList_student'+${course.id}" th:text="${course.waitingList.size()} + ' pending'"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

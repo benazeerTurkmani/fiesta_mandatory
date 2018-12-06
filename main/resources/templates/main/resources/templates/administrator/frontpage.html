@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontpage</title>
+    <!--<link type="text/css" rel="stylesheet" href="">-->
+    <style>
+        .header{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+        }
+
+        .box{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+            margin: 12px;
+        }
+
+        .text{
+            border-style: solid;
+            margin: 18px;
+
+        }
+
+        h1{
+            font-size: 135px;
+        }
+
+        a{
+            font-size: 50px;
+        }
+
+        body{
+            background: grey;
+        }
+    </style>
+
+<body>
+<div class="header">
+<div th:replace="header"></div>
+</div>
+<div class="box">
+    <div>
+        <div class="text">
+            <a href="/administrator/show">List of administrator</a>
+        </div>
+        <div class="text">
+            <a href="/student/show">List of students</a>
+        </div>
+        <div class="text">
+            <a href="/teacher/show">List of teachers</a>
+        </div>
+        <div class="text">
+            <a href="/studyProgramme/show">List of study programme</a>
+        </div>
+        <div class="text">
+            <a href="/courses/show">List of courses</a>
+        </div>
+        <div class="text">
+            <a href="/administrator/waitinglist"> Student request</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

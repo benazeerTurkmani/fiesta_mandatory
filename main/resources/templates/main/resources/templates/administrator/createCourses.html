@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+
+<div>
+    <h1>Create new adminstrator</h1>
+    <div>
+        <div>
+            <form method="post" action="/courses/new">
+                <div>
+                    <label>Name(DA)</label>
+                    <input th:field="${courses.nameInDanish}" type="text" placeholder="Enter name of course in danish"><br>
+                </div>
+                <div>
+                    <label>Name(EN)</label>
+                    <input th:text="${courses.nameInEnglish}" type="text"  placeholder="Enter name of course in english"><br>
+                </div>
+                <div>
+                    <label>Mandatory</label>
+                    <input th:text="${courses.mandatory}"  type="checkbox" placeholder="Enter if course is manadatory"><br>
+                </div>
+                <div>
+                    <label>ECTS</label>
+                    <input th:text="${courses.ects}"  type="number" placeholder="Enter ects points"><br>
+                </div>
+                <div>
+                    <label>Semester</label>
+                    <input th:text="${courses.semester}" type="number" max="6" placeholder="Enter ects points"><br>
+                </div>
+                <div>
+                    <label scope="col">Class code</label>
+                    <input th:text="${courses.classCode}" type="text" placeholder="Enter class code"><br>
+                </div>
+                <div>
+                    <label scope="col">Language</label>
+                    <input th:text="${courses.language}" type="text" placeholder="Enter language"><br>
+                </div>
+                <div>
+                    <label scope="col">Min # of students</label>
+                    <input th:text="${courses.minimumNumberOfStudents}" type="number" min="15" max="50" placeholder="Enter minimum number of students"><br>
+                </div>
+                <div>
+                    <label>Max # of students</label>
+                    <input th:text="${courses.maximumNumberOfStudents}" type="number" max="50" placeholder="Enter maximumm number of students"><br>
+                </div>
+                <div>
+                    <label>Expected # of students</label>
+                    <input th:text="${courses.expectedNumberOfStudents}" type="number" min="35" max="50" placeholder="Enter expected number of students"><br>
+                </div>
+                <div>
+                    <label>Prerequisites</label>
+                    <input th:text="${courses.prerequisites}" type="text" placeholder="Enter prerequisites"><br>
+                </div>
+                <div>
+                    <label>Learning outcome</label>
+                    <input th:text="${courses.learningOutcome}" type="text" placeholder="Enter prerequisites"><br>
+                </div>
+                <div>
+                    <label>Content</label>
+                    <input th:text="${courses.content}" type="text" placeholder="Enter prerequisites"><br>
+                </div>
+                <div>
+                    <label>Learning activities</label>
+                    <input th:text="${courses.learningActivities}" type="text" placeholder="Enter prerequisites"><br>
+                </div>
+                <div>
+                    <label>Exam form</label>
+                    <input th:text="${courses.examForm}" type="text" placeholder="Enter prerequisites"><br>
+                </div>
+                <div>
+                    <label>Study programme</label>
+                    <select th:field="${courses.studyProgramme}">
+                        <option value="" selected="true">Choose...</option>
+                        <option th:each="studyProgramme:${studyProgramme}" th:value="${studyProgramme.id}" th:text="${studyProgramme.name}"></option>
+                    </select>
+                </div>
+
+
+
+
+
+
+
+
+
+                <button type="submit" value="send">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

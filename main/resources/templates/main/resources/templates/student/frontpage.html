@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontpage</title>
+    <style>
+        .header{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+        }
+
+        .box{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+            margin: 12px;
+        }
+
+        .text{
+            border-style: solid;
+            margin: 18px;
+
+        }
+
+        h1{
+            font-size: 135px;
+        }
+
+        a{
+            font-size: 50px;
+        }
+
+        body{
+            background: grey;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+<div th:replace="header"></div>
+</div>
+<div class="box">
+    <!--<a href="/student/searchCoursesStudent" class="text">Search for courses</a>-->
+    <a href="/courses/show" class="text">List of courses</a>
+    <a href="/student/show" class="text">List of all students</a>
+</div>
+
+</body>
+</html>
+
+<!---
+Student. This user will login with the school credentials and can do the following tasks:
+Search for courses
+Sign up for a course
+See a list with the courses he/she signed up for
+--->

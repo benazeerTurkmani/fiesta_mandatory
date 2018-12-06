@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Teahcer</title>
+</head>
+<body>
+
+<div th:replace="header"></div>
+<h1>Editing Teacher information</h1>
+<div th:replace="header"></div>
+
+<div>
+    <h1>Editing student</h1>
+    <div>
+        <form th:object="${teacher}">
+            <div>
+                <div>
+                    <label for="email">Email</label>
+                    <input th:field="${teacher.email}" type="text" id="email" placeholder="Enter email">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input th:field="${teacher.password}" type="text" id="password"  placeholder=" Enter password">
+                </div>
+                <div>
+                    <label for="firstName">First name</label>
+                    <input th:field="${teacher.firstName}" type="text" id="firstName" placeholder="Enter firstname">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last name</label>
+                    <input th:field="${teacher.lastName}" type="text" id="lastName" placeholder="Enter lastname">
+                </div>
+            </div>
+            <button type="button" class="update" id="update-btn">Update</button>
+            <button type="button" class="delete" th:attr="data-id=${teacher.id}">Delete</button>
+        </form>
+    </div>
+</div>
+
+
+<!-------------------------------- JavaScript------------------------------>
+
+
+</body>
+</html>

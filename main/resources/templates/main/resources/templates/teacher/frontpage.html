@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontpage</title>
+
+    <style>
+        .header{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+        }
+
+        .box{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+            margin: 12px;
+        }
+
+        .text{
+            border-style: solid;
+            margin: 18px;
+
+        }
+
+        h1{
+            font-size: 135px;
+        }
+
+        a{
+            font-size: 50px;
+        }
+
+        body{
+            background: grey;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div th:replace="header"></div>
+</div>
+
+<div class="box">
+    <a href="/courses/new" class="text">Create new course</a>
+    <a href="/courses/show" class="text">List of all Courses</a>
+
+</div>
+
+</body>
+</html>
+
+<!--
+Teacher. This user will login with the school credentials and can do the following tasks:
+Create a new course with all the course information (see Course info section)
+Edit a course they created or they are teaching with other teachers.
+--->
