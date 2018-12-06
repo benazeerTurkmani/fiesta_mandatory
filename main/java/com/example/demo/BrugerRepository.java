@@ -10,4 +10,5 @@ public interface BrugerRepository extends CrudRepository<Bruger,Long> {
     Bruger findByEmail(String email);
 
     List<Bruger> findAll();
+
 }

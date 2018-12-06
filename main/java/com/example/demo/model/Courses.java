@@ -60,7 +60,7 @@ public class Courses {
     @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Student> waitingList;
 
-    public Courses(String nameInDanish, String nameInEnglish, Boolean isMandatory, Integer ects, Integer semester, String classCode, String language, Integer minimumNumberOfStudents, Integer maximumNumberOfStudents, Integer expectedNumberOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm, StudyProgramme studyProgramme) {
+    public Courses(String nameInDanish, String nameInEnglish, Boolean isMandatory, Integer ects, Integer semester, String classCode, String language, Integer minimumNumberOfStudents, Integer maximumNumberOfStudents, Integer expectedNumberOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm) {
         this.nameInDanish = nameInDanish;
         this.nameInEnglish = nameInEnglish;
         this.isMandatory = isMandatory;
@@ -76,10 +76,12 @@ public class Courses {
         this.content = content;
         this.learningActivities = learningActivities;
         this.examForm = examForm;
-        this.studyProgramme = studyProgramme;
     }
 
     public Courses(){}
+
+    public Courses(String nameInDanish, String nameInEnglish, Boolean isMandatory, Integer ects, Integer semester, String classCode, String language, Integer minimumNumberOfStudents, Integer maximumNumberOfStudents, Integer expectedNumberOfStudents, String prerequisites, Integer learningOutcome, String content, String learningActivities, String examForm) {
+    }
 
     public Long getId() {
         return id;
@@ -231,5 +233,34 @@ public class Courses {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    /** Andre hjælpe metoder**/
+
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
+    public void addStudentToWaitingList(Student student){
+        waitingList.add(student);
+    }
+
+    public void removeStudentFromWaitingList(Student student){
+        int index = 0;
+
+        for (int i = 0; i<waitingList.size(); i++){
+            if(waitingList.get(i).getId().equals(student.getId())){
+                index = i;
+            }
+        }
+        waitingList.remove(index);
+    }
+
+    public List<Student> getWaitingList() {
+        return waitingList;
+    }
+
+    public void setWaitingList(List<Student> waitingList) {
+        this.waitingList = waitingList;
     }
 }

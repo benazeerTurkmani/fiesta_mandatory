@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Search for courses</title>
+</head>
+<body>
+
+<div th:replace="student/header"></div>
+<form method="post" action="/search/SearchCoursesStudent">
+    <label for="">Name in Danish</label>
+    <input type="text" th:field="${courses.nameInDanish}">
+    <label for="">Name in English</label>
+    <input type="text" th:field="${courses.nameInEnglish}">
+    <label for="">Class Code</label>
+    <input type="text" th:field="${courses.classCode}">
+    <label for="">Exam Form</label>
+    <input type="text" th:field="${courses.examForm}">
+    <label for="">Language</label>
+    <input type="text" th:field="${courses.language}">
+    <label for="">Study Programme</label>
+    <input type="text" th:field="${courses.studyProgramme.name}">
+
+    <button type="submit">Search</button>
+</body>
+</html>

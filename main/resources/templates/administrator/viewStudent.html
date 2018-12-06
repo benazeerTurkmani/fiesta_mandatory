@@ -16,18 +16,20 @@
         <table>
             <thead>
             <tr>
+                <td scope="col">ID</td>
                 <td scope="col">Name</td>
                 <td scope="col">Email</td>
                 <td scope="col">Options</td>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="student:${student}">
+            <tr th:each="student:${students}">
+                <td th:text="${student.id}" >{{id}}</td>
                 <td th:text="${student.lastName} + ', ' + ${student.firstName}">{{name}}</td>
                 <td th:text="${student.email}">{{email}}</td>
                 <td>
-                    <button th:href="'/student/edit/'+${student.id}">Edit</button>
-                    <button th:href="'/student/delete/'+${student.id}" onclick="return confirm('This will delete student, confirm?')">Delete</button>
+                    <!--<button th:href="'/student/edit/'+${student.id}">Edit</button>-->
+                    <button type="button" class="student-delete btn btn-outline-danger" th:attr="data-id=${student.id}">Delete</button>                </td>
                 </td>
             </tr>
             </tbody>
@@ -35,6 +37,32 @@
 
     </div>
 </div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script>
+    $(document).on("click", ".student-delete", function () {
+        console.log("Button press");
+        var studentId = $(this).data("id");
+        $.ajax({
+            url: 'http://localhost:8080/student/delete/' + studentId,
+            method: 'delete',
+            success: function (resp) {
+                alert("This student has been deleted\n" + JSON.stringify(resp));
+                location.reload();
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    })
+</script>
+
 
 
 </body>

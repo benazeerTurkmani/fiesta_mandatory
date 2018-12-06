@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -34,7 +35,7 @@ public class StudyProgrammeController {
     }
 
     @GetMapping("/studyProgramme/edit/{id}")
-    public String studentEdit(Model model, @PathVariable Long id) {
+    public String studyProgrammeEdit(Model model, @PathVariable Long id) {
         Optional<StudyProgramme> optionalStudyProgramme = studyProgrammeRepository.findById(id);
         StudyProgramme studyProgramme = optionalStudyProgramme.get();
         model.addAttribute("studyProgramme", studyProgramme);
@@ -42,12 +43,13 @@ public class StudyProgrammeController {
     }
 
     @GetMapping("/studyProgramme/show")
-    public String showStudent(@PathVariable Long id, Model model) {
+    public String showStudyProgramme(Model model) {
         ArrayList<StudyProgramme> studyProgrammes = (ArrayList<StudyProgramme>) studyProgrammeRepository.findAll();
-        model.addAttribute("studyProgramme", studyProgrammes);
+        model.addAttribute("studyprogramme", studyProgrammes);
 
-        return ("administrator/viewStudyProgramme");
+        return ("/administrator/viewStudyProgramme");
     }
+
 
     /******************************************Waiting list**************************************/
 
@@ -64,7 +66,7 @@ public class StudyProgrammeController {
         return ("/administrator/waitingList");
     }
 
-    @GetMapping("/administrator/waitinglist/course/{id}")
+    /*@GetMapping("/administrator/waitinglist/course/{id}")
     public String waitingListCourseView(@PathVariable Long id, Model model, HttpServletRequest request){
 
         Optional<Courses> optionalCourse = coursesRepository.findById(id);
@@ -88,5 +90,5 @@ public class StudyProgrammeController {
             coursesRepository.save(courses);
 
         return "/administrator/waitinglist/course/" + courseId;
-    }
+    }*/
 }

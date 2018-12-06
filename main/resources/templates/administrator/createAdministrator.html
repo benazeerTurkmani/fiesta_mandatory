@@ -12,23 +12,23 @@
     <h1>Create new adminstrator</h1>
     <div>
         <div>
-            <form method="post" action="/adminstrator/new">
+            <form method="post" action="/administrator/new">
                 <div>
                     <div>
                         <label>Email</label>
-                        <input th:field="${administrator.email}" type="text" placeholder="Enter email">
+                        <input th:field="${bruger.email}" type="text" placeholder="Enter email">
                     </div>
                     <div>
                         <label>Kodeord</label>
-                        <input th:field="${administrator.password}" type="text" placeholder=" Enter password">
+                        <input th:field="${bruger.password}" type="text" placeholder=" Enter password">
                     </div>
                     <div>
                         <label>Fornavn</label>
-                        <input th:field="${administrator.firstName}" type="text" placeholder="Enter firstname">
+                        <input th:field="${bruger.firstName}" type="text" placeholder="Enter firstname">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Efternavn</label>
-                        <input th:field="${administrator.lastName}" type="text" placeholder="Enter lastname">
+                        <input th:field="${bruger.lastName}" type="text" placeholder="Enter lastname">
                     </div>
                 </div>
                 <button type="submit" value="send">Save</button>

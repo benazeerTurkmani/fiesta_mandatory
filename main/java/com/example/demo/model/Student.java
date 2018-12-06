@@ -12,4 +12,9 @@ import javax.persistence.Entity;
 
 @Entity
 public class Student extends Bruger {
+    public Student(String email, String firstName, String lastName, String password) {
+    }
+
+    public Student() {
+    }
 }

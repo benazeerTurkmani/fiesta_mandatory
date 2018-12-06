@@ -16,17 +16,19 @@
         <table>
             <thead>
             <tr>
+                <td scope="col">ID</td>
                 <td scope="col">Name</td>
                 <td scope="col">Email</td>
                 <td scope="col">Options</td>
             </tr>
             <tbody>
-            <tr th:each="teacher:${teachers}">
+            <tr th:each="teacher:${teacher}">
+                <td th:text="${teacher.id}" >{{id}}</td>
                 <td th:text="${teacher.lastName} + ', ' + ${teacher.firstName}">{{name}}</td>
                 <td th:text="${teacher.email}">{{email}}</td>
                 <td>
-                    <a th:href="'/teacher/delete/'+${teacher.id}" onclick="return confirm('This will delete teacher, confirm?')">Delete</a>
-                </td>
+                    <!--<button th:href="'/courses/update/'+${teacher.id}"> Edit </button>-->
+                    <button type="button" class="teacher-delete btn btn-outline-danger" th:attr="data-id=${teacher.id}">Delete</button>                </td>
             </tr>
             </tbody>
         </table>
@@ -34,6 +36,29 @@
     </div>
 </div>
 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    $(document).on("click", ".teacher-delete", function () {
+        console.log("Button press");
+        var teacherId = $(this).data("id");
+        $.ajax({
+            url: 'http://localhost:8080/teacher/delete/' + teacherId,
+            method: 'delete',
+            success: function (resp) {
+                alert("This teacher has been deleted\n" + JSON.stringify(resp));
+                location.reload();
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    })
+</script>
 
 </body>
 </html>

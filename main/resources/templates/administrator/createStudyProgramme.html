@@ -9,18 +9,15 @@
 
 <div>
     <h1>Create new study programme</h1>
-    <div>
+    <form method="post" action="/studyProgramme/new" >
         <div>
-            <form method="post" action="/studyProgramme/new">
-                <div>
-                    <div>
-                        <label>Name</label>
-                        <input th:field="${studyProgramme.name}" type="text" placeholder="Enter name of study programme">
-                    </div>
-                </div>
-                <button type="submit" value="send">Save</button>
-            </form>
+            <div>
+                <label>Name</label>
+                <input th:field="${studyprogramme.name}" type="text" placeholder="Enter name of study programme">
+            </div>
         </div>
+        <button type="submit" value="send">Save</button>
+    </form>
     </div>
 </div>
 

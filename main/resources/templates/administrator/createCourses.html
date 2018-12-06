@@ -14,24 +14,24 @@
         <div>
             <form method="post" action="/courses/new">
                 <div>
-                    <label>Name(DA)</label>
+                    <label scope="col">Name(DA)</label>
                     <input th:field="${courses.nameInDanish}" type="text" placeholder="Enter name of course in danish"><br>
                 </div>
                 <div>
-                    <label>Name(EN)</label>
+                    <label scope="col">Name(EN)</label>
                     <input th:text="${courses.nameInEnglish}" type="text"  placeholder="Enter name of course in english"><br>
                 </div>
                 <div>
-                    <label>Mandatory</label>
+                    <label scope="col">Mandatory</label>
                     <input th:text="${courses.mandatory}"  type="checkbox" placeholder="Enter if course is manadatory"><br>
                 </div>
                 <div>
-                    <label>ECTS</label>
-                    <input th:text="${courses.ects}"  type="number" placeholder="Enter ects points"><br>
+                    <label scope="col">ECTS</label>
+                    <input th:text="${courses.ects}"  type="number" min="5" max="30" placeholder="Enter ects points"><br>
                 </div>
                 <div>
-                    <label>Semester</label>
-                    <input th:text="${courses.semester}" type="number" max="6" placeholder="Enter ects points"><br>
+                    <label scope="col">Semester</label>
+                    <input th:text="${courses.semester}" type="number"  min="1" max="10" placeholder="Enter ects points"><br>
                 </div>
                 <div>
                     <label scope="col">Class code</label>
@@ -47,7 +47,7 @@
                 </div>
                 <div>
                     <label>Max # of students</label>
-                    <input th:text="${courses.maximumNumberOfStudents}" type="number" max="50" placeholder="Enter maximumm number of students"><br>
+                    <input th:text="${courses.maximumNumberOfStudents}" type="number" min="1" max="50" placeholder="Enter maximumm number of students"><br>
                 </div>
                 <div>
                     <label>Expected # of students</label>
@@ -73,21 +73,6 @@
                     <label>Exam form</label>
                     <input th:text="${courses.examForm}" type="text" placeholder="Enter prerequisites"><br>
                 </div>
-                <div>
-                    <label>Study programme</label>
-                    <select th:field="${courses.studyProgramme}">
-                        <option value="" selected="true">Choose...</option>
-                        <option th:each="studyProgramme:${studyProgramme}" th:value="${studyProgramme.id}" th:text="${studyProgramme.name}"></option>
-                    </select>
-                </div>
-
-
-
-
-
-
-
-
 
                 <button type="submit" value="send">Save</button>
             </form>

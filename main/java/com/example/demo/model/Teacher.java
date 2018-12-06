@@ -10,4 +10,9 @@ import javax.persistence.Entity;
 
 @Entity
 public class Teacher extends Bruger {
+    public Teacher(String email, String firstName, String lastName, String password) {
+    }
+
+    public Teacher() {
+    }
 }

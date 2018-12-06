@@ -32,15 +32,38 @@
                     <input th:field="${teacher.lastName}" type="text" id="lastName" placeholder="Enter lastname">
                 </div>
             </div>
-            <button type="button" class="update" id="update-btn">Update</button>
-            <button type="button" class="delete" th:attr="data-id=${teacher.id}">Delete</button>
+            <button type="button" class="btn" id="update-btn">Update</button>
         </form>
     </div>
 </div>
 
 
 <!-------------------------------- JavaScript------------------------------>
-
+<script th:inline="javascript">
+    $(document).on('click', '#update-btn', function () {
+        console.log("btn pressed");
+        console.log($('#name').val());
+        var teacherId = [[${teacher.id}]];
+        $.ajax({
+            url: "http://localhost:8080/teacher/update/"+teacherId,
+            method: "put",
+            data: {
+                email: $('#email').val(),
+                firstName:$('#firstName').val(),
+                lastName:$('#lastName').val(),
+                password: $('#password').val(),
+            },
+            success: function (resp) {
+                alert("This teacher has been updated\n" + JSON.stringify(resp));
+                location.href="/administrator/viewTeacher";
+            },
+            error: function (err) {
+                alert("ERROR\n" + JSON.stringify(err));
+                location.reload();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

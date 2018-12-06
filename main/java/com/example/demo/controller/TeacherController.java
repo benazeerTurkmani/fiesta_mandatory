@@ -34,7 +34,7 @@ public class TeacherController {
     }
 
     @GetMapping("/teacher/show")
-    public String showAdmin(@PathVariable Long id, Model model) {
+    public String showAdmin(Model model) {
         ArrayList<Teacher> teachers = (ArrayList<Teacher>) teacherRepository.findAll();
         model.addAttribute("teacher", teachers);
 

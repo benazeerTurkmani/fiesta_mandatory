@@ -14,6 +14,9 @@ public class StudyProgramme {
     public StudyProgramme() {
     }
 
+    public StudyProgramme(String name) {
+    }
+
     public Long getId() {
         return id;
     }

@@ -10,4 +10,9 @@ import javax.persistence.Entity;
 @Entity
 public class Administrator extends Bruger {
 
+    public Administrator(String email, String firstName, String lastName, String password) {
+    }
+
+    public Administrator() {
+    }
 }

@@ -3,25 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Frontpage</title>
-</head>
-<body>
+    <style>
+        .header{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+        }
 
-<div th:replace="student/header"></div>
-<form method="post" action="/search">
-    <div>
-        <ul>
-            <li>
-                <a href="/student/searchCoursesStudent">Search for courses</a>
-            </li>
-            <li>
-                <a href="/courses/students/">List of courses</a>
-            </li>
-            <li>
-                <a href="/student/edit/">Edit your information</a>
-            </li>
-        </ul>
-    </div>
-</form>
+        .box{
+            border-color: black;
+            padding: 34px;
+            text-align: center;
+            margin: 12px;
+        }
+
+        .text{
+            border-style: solid;
+            margin: 18px;
+
+        }
+
+        h1{
+            font-size: 135px;
+        }
+
+        a{
+            font-size: 50px;
+        }
+
+        body{
+            background: grey;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+<div th:replace="header"></div>
+</div>
+<div class="box">
+    <!--<a href="/student/searchCoursesStudent" class="text">Search for courses</a>-->
+    <a href="/courses/show" class="text">List of courses</a>
+    <a href="/student/show" class="text">List of all students</a>
+</div>
+
 </body>
 </html>
 

@@ -41,10 +41,10 @@
                 </td>
                 <td>
                     <a th:href="'/teacher/coursesInfo/?id='+${course.id}">Show more</a>
-                    <a th:href="@{'/administrator/viewStudent/'+${course.id}}">Students</a>
+                    <a href="/student/show">Students</a>
                 </td>
                 <td>
-                    <a th:href="'/administrator/waitinglist/course/'+${course.id}" th:text="${course.waitingList.size()} + ' pending'"></a>
+                    <a th:href="'/administrator/waitingList_student'+${course.id}" th:text="${course.waitingList.size()} + ' pending'"></a>
                 </td>
             </tr>
             </tbody>
